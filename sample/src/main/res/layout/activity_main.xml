@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.csot.fliplayout.sample.MainActivity">
+
+    <com.csot.fliplayout.lib.FlipLayout
+        android:id="@+id/fliplayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:transition="FADE">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#4286f4"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="G"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#555"
+            android:gravity="center"
+            android:padding="20dp"
+            android:src="@drawable/ic_done_black_48dp"
+            android:textStyle="bold"
+            android:tint="#fff"/>
+
+    </com.csot.fliplayout.lib.FlipLayout>
+
+    <com.csot.fliplayout.lib.FlipLayout
+        android:id="@+id/fliplayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:transition="FLIP_X">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#4286f4"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="G"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#555"
+            android:gravity="center"
+            android:padding="20dp"
+            android:src="@drawable/ic_done_black_48dp"
+            android:textStyle="bold"
+            android:tint="#fff"/>
+
+    </com.csot.fliplayout.lib.FlipLayout>
+
+    <com.csot.fliplayout.lib.FlipLayout
+        android:id="@+id/fliplayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:transition="FLIP_Y">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#ff5c1c"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="G"
+            android:textColor="#fff"
+            android:textSize="50dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#4286f4"
+            android:gravity="center"
+            android:src="@drawable/ic_done_black_48dp"
+            android:textStyle="bold"
+            android:tint="#fff"/>
+
+    </com.csot.fliplayout.lib.FlipLayout>
+
+    <com.csot.fliplayout.lib.FlipLayout
+        android:id="@+id/fliplayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:transition="TRANSLATE_Y">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#4286f4"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="FirstView"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/fliplayout4"
+            app:layout_constraintLeft_toLeftOf="@id/fliplayout4"
+            app:layout_constraintRight_toRightOf="@id/fliplayout4"
+            app:layout_constraintTop_toTopOf="@id/fliplayout4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#6016f4"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="SecondView"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/fliplayout4"
+            app:layout_constraintLeft_toLeftOf="@id/fliplayout4"
+            app:layout_constraintRight_toRightOf="@id/fliplayout4"
+            app:layout_constraintTop_toTopOf="@id/fliplayout4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#f18614"
+            android:gravity="center"
+            android:padding="50dp"
+            android:text="ThirdView"
+            android:textColor="#fff"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="@id/fliplayout4"
+            app:layout_constraintLeft_toLeftOf="@id/fliplayout4"
+            app:layout_constraintRight_toRightOf="@id/fliplayout4"
+            app:layout_constraintTop_toTopOf="@id/fliplayout4"/>
+    </com.csot.fliplayout.lib.FlipLayout>
+
+    <com.csot.fliplayout.lib.FlipLayout
+        android:id="@+id/fliplayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:transition="TRANSLATE_X">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle"
+            android:backgroundTint="#4286f4"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="A"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#ff86f4"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/fliplayout5"
+            app:layout_constraintLeft_toLeftOf="@id/fliplayout5"
+            app:layout_constraintRight_toRightOf="@id/fliplayout5"
+            app:layout_constraintTop_toTopOf="@id/fliplayout5"
+            android:text="B"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle"
+            android:backgroundTint="#42fff4"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="C"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="D"
+            android:textColor="#111"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#12f614"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="B"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#f8f611"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="E"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#ff11f1"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="F"
+            android:textColor="#fff"
+            android:textSize="40dp"/>
+
+    </com.csot.fliplayout.lib.FlipLayout>
+</LinearLayout>

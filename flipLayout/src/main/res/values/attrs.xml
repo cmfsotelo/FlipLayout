@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlipLayout">
+        <attr name="startingChild" format="integer"/>
+        <attr name="transitionDuration" format="integer"/>
+        <attr name="transition" format="enum">
+            <enum name="FADE" value="0"/>
+            <enum name="FLIP_X" value="1"/>
+            <enum name="FLIP_Y" value="2"/>
+            <enum name="TRANSLATE_X" value="3"/>
+            <enum name="TRANSLATE_Y" value="4"/>
+            <enum name="FLIP_Z1" value="5"/>
+            <enum name="FLIP_Z2" value="6"/>
+        </attr>
+    </declare-styleable>
+</resources>
