@@ -23,7 +23,7 @@ dependencies {
 }
 ```
 <h2>Usage</h2>
-Simply use the FrameLayout public methods change which view is visible.
+Simply use the FrameLayout public methods to change which view is visible.
 
 ```java
 public void showNextChild();
