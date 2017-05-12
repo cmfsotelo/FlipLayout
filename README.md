@@ -2,7 +2,7 @@
 [![](https://jitpack.io/v/cmfsotelo/fliplayout.svg)](https://jitpack.io/#cmfsotelo/fliplayout)
 ![Minimum SDK](https://img.shields.io/badge/minSdkVersion%20-15-blue.svg)
 
-ViewGroup to easily swap between child views.
+Use the FlipLayout as a ViewGroup to easily swap between child views.
 
 <h2>Include in your project</h2>
 <h4> In your root/build.gradle</h4>
@@ -22,6 +22,14 @@ dependencies {
 	compile 'com.github.cmfsotelo:fliplayout:v1.0.0'
 }
 ```
+<h2>Usage</h2>
+Simply use the FrameLayout public methods change which view is visible.
+
+```java
+public void showNextChild();
+public void showPreviousChild();
+```
+
 <h2>Examples (click image to expand code)</h2>
 <details>
   <summary><h4>Use to simply flip one view with another</h4><img src="images/JxXiRf.gif"></summary>
