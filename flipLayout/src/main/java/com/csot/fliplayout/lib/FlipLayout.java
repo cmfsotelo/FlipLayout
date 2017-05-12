@@ -8,15 +8,16 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
 
 import com.csot.fliplayout.R;
 
-public class FlipLayout extends ConstraintLayout {
+//public class FlipLayout extends ConstraintLayout {
+public class FlipLayout extends FrameLayout {
     public static final int FADE = 0;
     public static final int FLIP_X = 1;
     public static final int FLIP_Y = 2;

@@ -38,7 +38,6 @@
             android:src="@drawable/ic_done_black_48dp"
             android:textStyle="bold"
             android:tint="#fff"/>
-
     </com.csot.fliplayout.lib.FlipLayout>
 
     <com.csot.fliplayout.lib.FlipLayout
@@ -70,7 +69,6 @@
             android:src="@drawable/ic_done_black_48dp"
             android:textStyle="bold"
             android:tint="#fff"/>
-
     </com.csot.fliplayout.lib.FlipLayout>
 
     <com.csot.fliplayout.lib.FlipLayout
@@ -82,6 +80,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/rectangle"
             android:backgroundTint="#ff5c1c"
@@ -94,6 +93,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/rectangle"
             android:backgroundTint="#4286f4"
@@ -101,7 +101,6 @@
             android:src="@drawable/ic_done_black_48dp"
             android:textStyle="bold"
             android:tint="#fff"/>
-
     </com.csot.fliplayout.lib.FlipLayout>
 
     <com.csot.fliplayout.lib.FlipLayout
@@ -113,47 +112,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="#4286f4"
             android:gravity="center"
             android:padding="20dp"
             android:text="FirstView"
             android:textColor="#fff"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/fliplayout4"
-            app:layout_constraintLeft_toLeftOf="@id/fliplayout4"
-            app:layout_constraintRight_toRightOf="@id/fliplayout4"
-            app:layout_constraintTop_toTopOf="@id/fliplayout4"/>
+            android:textSize="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="#6016f4"
             android:gravity="center"
             android:padding="20dp"
             android:text="SecondView"
             android:textColor="#fff"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/fliplayout4"
-            app:layout_constraintLeft_toLeftOf="@id/fliplayout4"
-            app:layout_constraintRight_toRightOf="@id/fliplayout4"
-            app:layout_constraintTop_toTopOf="@id/fliplayout4"/>
+            android:textSize="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="#f18614"
             android:gravity="center"
             android:padding="50dp"
             android:text="ThirdView"
             android:textColor="#fff"
-            android:textSize="50dp"
-            app:layout_constraintBottom_toBottomOf="@id/fliplayout4"
-            app:layout_constraintLeft_toLeftOf="@id/fliplayout4"
-            app:layout_constraintRight_toRightOf="@id/fliplayout4"
-            app:layout_constraintTop_toTopOf="@id/fliplayout4"/>
+            android:textSize="50dp"/>
     </com.csot.fliplayout.lib.FlipLayout>
 
     <com.csot.fliplayout.lib.FlipLayout
@@ -165,6 +155,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:background="@drawable/circle"
             android:backgroundTint="#4286f4"
             android:gravity="center"
@@ -176,20 +167,19 @@
         <TextView
             android:layout_width="90dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@drawable/rectangle"
             android:backgroundTint="#ff86f4"
             android:padding="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/fliplayout5"
-            app:layout_constraintLeft_toLeftOf="@id/fliplayout5"
-            app:layout_constraintRight_toRightOf="@id/fliplayout5"
-            app:layout_constraintTop_toTopOf="@id/fliplayout5"
             android:text="B"
             android:textColor="#fff"
-            android:textSize="40dp"/>
+            android:textSize="40dp"
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:background="@drawable/circle"
             android:backgroundTint="#42fff4"
             android:gravity="center"
@@ -201,6 +191,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:gravity="center"
             android:padding="20dp"
@@ -211,6 +202,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/rectangle"
             android:backgroundTint="#12f614"
@@ -223,6 +215,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/circle"
             android:backgroundTint="#f8f611"
@@ -235,6 +228,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/rectangle"
             android:backgroundTint="#ff11f1"
@@ -243,6 +237,5 @@
             android:text="F"
             android:textColor="#fff"
             android:textSize="40dp"/>
-
     </com.csot.fliplayout.lib.FlipLayout>
 </LinearLayout>
