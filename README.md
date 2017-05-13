@@ -1,6 +1,7 @@
 # FlipLayout
 [![](https://jitpack.io/v/cmfsotelo/fliplayout.svg)](https://jitpack.io/#cmfsotelo/fliplayout)
 ![Minimum SDK](https://img.shields.io/badge/minSdkVersion%20-15-blue.svg)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlipLayout-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5751)
 
 Use the FlipLayout as a ViewGroup to easily swap between child views.
 
