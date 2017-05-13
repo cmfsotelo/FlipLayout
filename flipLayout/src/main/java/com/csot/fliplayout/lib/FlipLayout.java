@@ -87,6 +87,24 @@ public class FlipLayout extends FrameLayout {
         }
     }
 
+    public void showChild(int targetChild, boolean animate) {
+        if (animate && !isAnimating() && getChildCount() > 1) {
+            View vFrom = getChildAt(visibleChild);
+            View vTo = getChildAt(targetChild);
+            playTransitAnimation(vFrom, vTo, false);
+            visibleChild = targetChild;
+        } else {
+            cancelAnimations();
+            setVisibleChild(targetChild);
+        }
+    }
+
+    private void cancelAnimations() {
+        for (int i = 0; i < getChildCount(); i++) {
+            getChildAt(i).clearAnimation();
+        }
+    }
+
     private boolean isAnimating() {
         return isAnimating;
     }
@@ -106,22 +124,22 @@ public class FlipLayout extends FrameLayout {
             case FLIP_X:
                 fromView.setRotationX(0);
                 toView.setRotationX(-rot);
-                fromView.animate().rotationX(rot).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
+                fromView.animate().rotationX(rot).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        toView.animate().rotationX(0).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                        toView.animate().rotationX(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                     }
                 });
                 break;
             case FLIP_Y:
                 fromView.setRotationY(0);
                 toView.setRotationY(-rot);
-                fromView.animate().rotationY(rot).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
+                fromView.animate().rotationY(rot).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        toView.animate().rotationY(0).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                        toView.animate().rotationY(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                     }
                 });
                 break;
@@ -130,11 +148,11 @@ public class FlipLayout extends FrameLayout {
                 fromView.setRotation(0);
                 toView.setPivotY(0 - toView.getPaddingTop());
                 toView.setRotation(-rot * 2);
-                fromView.animate().rotation(rot * 2).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
+                fromView.animate().rotation(rot * 2).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        toView.animate().rotation(0).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                        toView.animate().rotation(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                     }
                 });
                 break;
