@@ -26,8 +26,23 @@ dependencies {
 Simply use the FrameLayout public methods to change which view is visible.
 
 ```java
+/**
+* Shows the child next to the one being shown, animating it. If the current child is the last one, the first child shown.
+*/
 public void showNextChild();
-public void showPreviousChild();
+
+/**
+* Shows the child previous to the one being shown, animating it. If the current child is the first one, the last child shown.
+*/
+public void showPreviousChild() ;
+
+/**
+* Sets the target child as the visible one. Can be animated or not. When animated, it animates from the current visible child immediately to the target one.
+*
+* @param targetChild - the target child
+* @param animate     - flag to make the transition animating it or not
+*/
+public void showChild(int targetChild, boolean animate) 
 ```
 
 <h2>Examples (click image to expand code)</h2>
