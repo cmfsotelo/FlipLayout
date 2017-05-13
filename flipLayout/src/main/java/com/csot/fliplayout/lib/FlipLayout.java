@@ -73,6 +73,9 @@ public class FlipLayout extends FrameLayout {
         child.setClipToOutline(false);
     }
 
+    /**
+     * Shows the child next to the one being shown, animating it. If the current child is the last one, the first child shown.
+     */
     public void showNextChild() {
         if (!isAnimating() && getChildCount() > 1) {
             int childIt = (visibleChild + 1 > getChildCount() - 1) ? 0 : visibleChild + 1;
@@ -87,6 +90,23 @@ public class FlipLayout extends FrameLayout {
         }
     }
 
+    /**
+     * Shows the child previous to the one being shown, animating it. If the current child is the first one, the last child shown.
+     */
+    public void showPreviousChild() {
+        if (!isAnimating() && getChildCount() > 1) {
+            int childIt = (visibleChild - 1 < 0) ? getChildCount() - 1 : visibleChild - 1;
+            playTransitAnimation(getChildAt(visibleChild), getChildAt(childIt), true);
+            visibleChild = childIt;
+        }
+    }
+
+    /**
+     * Sets the target child as the visible one. Can be animated or not. When animated, it animates from the current visible child immediately to the target one.
+     *
+     * @param targetChild - the target child
+     * @param animate     - flag to make the transition animating it or not
+     */
     public void showChild(int targetChild, boolean animate) {
         if (animate && !isAnimating() && getChildCount() > 1) {
             View vFrom = getChildAt(visibleChild);
@@ -185,14 +205,6 @@ public class FlipLayout extends FrameLayout {
 
     private void playTransitAnimation(final View fromView, final View toView, final boolean inverse) {
         playTransitAnimation(fromView, toView, transition, inverse);
-    }
-
-    public void showPreviousChild() {
-        if (!isAnimating() && getChildCount() > 1) {
-            int childIt = (visibleChild - 1 < 0) ? getChildCount() - 1 : visibleChild - 1;
-            playTransitAnimation(getChildAt(visibleChild), getChildAt(childIt), true);
-            visibleChild = childIt;
-        }
     }
 
     public int getVisibleChild() {
