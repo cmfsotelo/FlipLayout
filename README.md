@@ -46,8 +46,9 @@ public void showChild(int targetChild, boolean animate)
 ```
 
 <h2>Examples (click image to expand code)</h2>
+<img src="images/JxXiRf.gif">
 <details>
-  <summary><h4>Use to simply flip one view with another</h4><img src="images/JxXiRf.gif"></summary>
+  <summary><h4>Use to simply flip one view with another</h4></summary>
 
 ```xml
 <com.csot.fliplayout.lib.FlipLayout
@@ -84,9 +85,9 @@ app:transition="FLIP_X">
 </details>
 
 <h2>OR</h2>
-
+<img src="images/OgR5nT.gif">
 <details>
-  <summary><h4>Use to swap over several views</h4><img src="images/OgR5nT.gif"><img src="images/RSxNeM.gif"></summary>
+  <summary><h4>Use to swap over several views</h4></summary>
 
 ```xml
 <com.csot.fliplayout.lib.FlipLayout
