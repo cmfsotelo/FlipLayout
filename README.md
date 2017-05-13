@@ -19,7 +19,7 @@ allprojects {
 
 ```groovy
 dependencies {
-	compile 'com.github.cmfsotelo:fliplayout:v1.0.0'
+	compile 'com.github.cmfsotelo:fliplayout:latest.version.here'
 }
 ```
 <h2>Usage</h2>
