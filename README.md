@@ -5,6 +5,8 @@
 
 Use the FlipLayout as a ViewGroup to easily swap between child views.
 
+<img src="images/QYwqIQ.gif"><img src="images/wPxlIA.gif"><img src="images/JxXiRf.gif"><img src="images/RSxNeM.gif">
+
 <h2>Include in your project</h2>
 <h4> In your root/build.gradle</h4>
 
@@ -48,6 +50,7 @@ public void showChild(int targetChild, boolean animate)
 
 <h2>Examples (click image to expand code)</h2>
 <img src="images/JxXiRf.gif">
+
 <details>
   <summary><h4>Use to simply flip one view with another</h4></summary>
 
