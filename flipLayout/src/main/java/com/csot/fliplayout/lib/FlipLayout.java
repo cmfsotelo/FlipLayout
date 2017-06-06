@@ -11,6 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 
@@ -30,6 +31,8 @@ public class FlipLayout extends FrameLayout {
     int transition = FLIP_Y;
     Interpolator interpolator;
     boolean isAnimating;
+    ViewPropertyAnimator fromViewPropertyAnimator;
+    ViewPropertyAnimator toViewPropertyAnimator;
 
     public FlipLayout(@NonNull Context context) {
         this(context, null, 0);
@@ -120,8 +123,11 @@ public class FlipLayout extends FrameLayout {
     }
 
     private void cancelAnimations() {
-        for (int i = 0; i < getChildCount(); i++) {
-            getChildAt(i).clearAnimation();
+        if (toViewPropertyAnimator != null) {
+            toViewPropertyAnimator.cancel();
+        }
+        if (fromViewPropertyAnimator != null) {
+            fromViewPropertyAnimator.cancel();
         }
     }
 
@@ -133,33 +139,40 @@ public class FlipLayout extends FrameLayout {
         fromView.setVisibility(VISIBLE);
         toView.setVisibility(INVISIBLE);
         final int rot = inverse ? 90 : -90;
+        cancelAnimations();
         switch (transition) {
             case FADE:
                 fromView.setAlpha(1);
                 toView.setAlpha(0);
                 toView.setVisibility(VISIBLE);
-                fromView.animate().alpha(0).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, INVISIBLE));
-                toView.animate().alpha(1).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                fromViewPropertyAnimator = fromView.animate();
+                fromViewPropertyAnimator.alpha(0).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, INVISIBLE));
+                toViewPropertyAnimator = toView.animate();
+                toViewPropertyAnimator.alpha(1).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                 break;
             case FLIP_X:
                 fromView.setRotationX(0);
                 toView.setRotationX(-rot);
-                fromView.animate().rotationX(rot).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
+                fromViewPropertyAnimator = fromView.animate();
+                fromViewPropertyAnimator.rotationX(rot).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        toView.animate().rotationX(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                        toViewPropertyAnimator = toView.animate();
+                        toViewPropertyAnimator.rotationX(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                     }
                 });
                 break;
             case FLIP_Y:
                 fromView.setRotationY(0);
                 toView.setRotationY(-rot);
-                fromView.animate().rotationY(rot).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
+                fromViewPropertyAnimator = fromView.animate();
+                fromViewPropertyAnimator.rotationY(rot).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        toView.animate().rotationY(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                        toViewPropertyAnimator = toView.animate();
+                        toViewPropertyAnimator.rotationY(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                     }
                 });
                 break;
@@ -168,11 +181,13 @@ public class FlipLayout extends FrameLayout {
                 fromView.setRotation(0);
                 toView.setPivotY(0 - toView.getPaddingTop());
                 toView.setRotation(-rot * 2);
-                fromView.animate().rotation(rot * 2).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
+                fromViewPropertyAnimator = fromView.animate();
+                fromViewPropertyAnimator.rotation(rot * 2).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE) {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        toView.animate().rotation(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                        toViewPropertyAnimator = toView.animate();
+                        toViewPropertyAnimator.rotation(0).setDuration(transitionDuration / 2).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                     }
                 });
                 break;
@@ -183,22 +198,28 @@ public class FlipLayout extends FrameLayout {
                 toView.setPivotY(toView.getHeight() / 2);
                 toView.setPivotX(0 - toView.getPaddingStart() - toView.getWidth() / 2);
                 toView.setRotation(-rot);
-                fromView.animate().rotation(rot).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE));
-                toView.animate().rotation(0).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                fromViewPropertyAnimator = fromView.animate();
+                fromViewPropertyAnimator.rotation(rot).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE));
+                toViewPropertyAnimator = toView.animate();
+                toViewPropertyAnimator.rotation(0).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                 break;
             case TRANSLATE_X:
                 final float width = !inverse ? -getWidth() : getWidth();
                 fromView.setTranslationX(0);
                 toView.setTranslationX(-width);
-                fromView.animate().translationXBy(width).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE));
-                toView.animate().translationXBy(width).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                fromViewPropertyAnimator = fromView.animate();
+                fromViewPropertyAnimator.translationXBy(width).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE));
+                toViewPropertyAnimator = toView.animate();
+                toViewPropertyAnimator.translationXBy(width).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                 break;
             case TRANSLATE_Y:
                 final float height = !inverse ? -getHeight() : getHeight();
                 fromView.setTranslationY(0);
                 toView.setTranslationY(-height);
-                fromView.animate().translationYBy(height).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE));
-                toView.animate().translationYBy(height).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
+                fromViewPropertyAnimator = fromView.animate();
+                fromViewPropertyAnimator.translationYBy(height).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(fromView, INVISIBLE));
+                toViewPropertyAnimator = toView.animate();
+                toViewPropertyAnimator.translationYBy(height).setDuration(transitionDuration).setInterpolator(interpolator).setListener(new ViewAnimation(toView, VISIBLE));
                 break;
         }
     }
